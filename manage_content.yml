@@ -1,0 +1,4 @@
+---
+- name: Deploy content
+  hosts: dev
+  become: yes
