@@ -2,3 +2,20 @@
 - name: Deploy content
   hosts: dev
   become: yes
+  tasks:
+    - name: Playbook with tag alpha
+      copy:
+        content: "Que Sera, Sera\n"
+        dest: /var/www/html/index.html
+        force: yes
+      tags:
+        - alpha
+        - never
+    - name: Playbook with the tag beta
+      copy:
+        content: "Whatever will be, will be\n"
+        dest: /var/www/html/index.html
+        force: yes
+      tags:
+        - beta
+        - never
