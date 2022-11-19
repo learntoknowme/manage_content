@@ -2,3 +2,21 @@
 - name: Deploy content
   hosts: dev
   become: yes
+  tasks:
+    - name: Update the web server content when tag is alpha
+      copy:
+        content: "Que Sera, Sera\n"
+        dest: "/var/www/html/index.html"
+        force: yes
+      tags:
+        - alpha
+        - never
+
+    - name: Update the web server content when tag is beta
+      copy:
+        content: "Whatever will be, will be\n"
+        dest: "/var/www/html/index.html"
+        force: yes
+      tags:
+        - beta
+        - never
