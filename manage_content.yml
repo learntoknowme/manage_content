@@ -2,3 +2,20 @@
 - name: Deploy content
   hosts: dev
   become: yes
+  tasks:
+  - name: Serve the content for alpha
+    copy:
+      content: "Que Sera, Sera\n"
+      dest: /var/www/html/index.html
+      force: yes
+    tags:
+    - alpha
+    - never
+  - name: Serve the content for beta
+    copy:
+      content: "Whatever will be, will be\n"
+      dest: /var/www/html/index.html
+      force: yes
+    tags:
+    - beta
+    - never
